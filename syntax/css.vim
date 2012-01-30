@@ -44,7 +44,7 @@ syn match cssPrefix /\(-\(webkit\|moz\|o\|ms\)-\)\|filter/
 
 syn match cssNumber /\(-\)\=\(\.\d\+\|\d\+\(\.\d\+\)\{0,\}\)/ contained
 
-syn match cssPseudo /\:\(child\|link\|visited\|active\|hover\|focus\|left\|right\|root\|empty\|target\|enabled\|disabled\|checked\|indeterminate\|valid\|invalid\|required\|optional\|default\)\>/
+syn match cssPseudo /\:\(child\|link\|visited\|active\|hover\|focus\|left\|right\|root\|empty\|target\|enabled\|disabled\|checked\|indeterminate\|valid\|invalid\|required\|optional\|default\|last\-of\-type\|first\-of\-type\)\>/
 syn match cssPseudo /\:first\-\(child\)\>/
 syn match cssPseudo /\:\{1,2\}first\-\(letter\|line\)\>/
 syn match cssPseudo /\:\(last\|only\)-child\>/
@@ -65,7 +65,7 @@ syn match cssPropRegion /[^{}]*/ contained contains=cssProp,cssAttrBlock,cssPref
 
 syn region cssAttrBlock start=/:\zs/ end=/\ze[;}]\{1\}/ contained contains=cssAttr,cssColor,cssImportant,cssNumber,cssUnits,cssQuote,cssFunction
 
-syn keyword cssAttr above absolute accent adjacent after alias all alphabetic alternate always auto avoid balance baseline back before behind below blink block bold bolder border both bottom capitalize caption cell center central circle clear clone code collapse compact copy crop cross crosshair current dashed default digits disc discard dot dotted double embed end fast faster fill first fixed forward front hanging help here hidden hide high higher horizontal icon ideographic inherit inhibit initial invert italic justify kashida landscape last left level lighter linear loud low lower ltr mathematical manual medium meet menu middle modal move multiple moderate narrower new none normal nowrap oblique overline parent perceptual pointer portrait progress reduced relative reverse ridge right root rtl same saturation scroll separate show silent single slice slide slow slower solid soft square start static stretch strong sub super suppress tab text thick thin tibetan top underline unrestricted vertical visible wait wider window contained
+syn keyword cssAttr above absolute accent adjacent after alias all alphabetic alternate always auto avoid balance baseline back before behind below blink block bold bolder border both bottom capitalize caption cell center central circle clear clone code collapse compact copy crop cross crosshair current dashed default digits disc discard dot dotted double embed end fast faster fill first fixed forward front hanging help here hidden hide high higher horizontal icon ideographic inherit inhibit initial invert italic justify kashida landscape last left level lighter linear loud low lower ltr mathematical manual medium meet menu middle modal move multiple moderate narrower new none normal nowrap oblique overline parent perceptual pointer portrait progress reduced relative reverse ridge right root rtl same saturation scroll separate show silent single slice slide slow slower solid soft square start static stretch strong sub super suppress tab text tibetan top underline unrestricted vertical visible wait wider window contained sans-serif helvetica neue arial times new roman serif georgia courier padding-box monospace ellipsis wrap antialiased thick thin tibetan
 
 syn match cssAttr /\<transparent\>/ contained
 
@@ -126,7 +126,7 @@ syn match cssProp /\(\<\|\)dominant-baseline\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)drop-initial-\(\(\(after\|before\)-\(adjust\|align\)\)\|size\|value\)\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)fit\(-position\)\{0,1\}\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)float\>\(-offset\)\{0,1\}\ze\s*:/ contained
-syn match cssProp /\(\<\|\)font\(-\(family\|size\(-adjust\)\=\|stretch\|style\|variant\|weight\)\)\=\>\ze\s*:/ contained
+syn match cssProp /\(\<\|\)font\(-\(family\|size\|smoothing\(-adjust\)\=\|stretch\|style\|variant\|weight\)\)\=\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)grid-\(columns\|rows\)\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)hyphenate-\(after\|before\|character\|lines\|resource\)\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)image-\(orientation\|resolution\)\>\ze\s*:/ contained
@@ -175,6 +175,7 @@ syn region cssAttValFn start=/\<\(rotate\|rgba\|rgb\|hsl\|hsla\)\s*(\zs/ end=/\z
 syn match cssBraket /[{}]/ contained
 
 syn match cssQuote /\('.*'\|".*"\)/ contained
+syn match cssPunctuation /[,;:]/ contained
 
 " Define the default highlighting.
 command -nargs=+ HLink hi def link <args>
@@ -187,16 +188,14 @@ HLink cssAtProps Function
 
 HLink cssAttr SpecialKey
 
-HLink cssAttValFn Function
+"HLink cssAttValFn Function
 
-HLink cssValBlock Function
-HLink cssValFn Function
+"HLink cssValBlock Function
+"HLink cssValFn Function
 
 HLink cssAttrBlock Normal
 
-HLink cssBraket Function
-
-HLink cssClass Function
+"HLink cssClass Function
 
 HLink cssColor Constant
 
@@ -204,12 +203,14 @@ HLink cssComment Comment
 
 HLink cssError ErrorMsg
 
-HLink cssPathFn Directory
+"HLink cssPathFn Directory
 
-HLink cssFunction Function
-HLink cssFnValBlock Function
+"HLink cssFunction Function
+"HLink cssFunction Directory
+"HLink cssFnValBlock Function
 
-HLink cssFuncRegion Function
+HLink cssFuncRegion Normal
+"HLink cssFuncRegion Function
 
 HLink cssIdentifier Identifier
 
@@ -241,4 +242,4 @@ delcommand HLink
 
 let b:current_syntax = "css"
 let b:BetterCSSSyntaxforVim = "1"
-syn sync minlines=10
+syn sync minlines=200
