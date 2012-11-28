@@ -240,4 +240,4 @@ delcommand HLink
 
 let b:current_syntax = "css"
 let b:BetterCSSSyntaxforVim = "1"
-syn sync minlines=200
+syn sync fromstart
