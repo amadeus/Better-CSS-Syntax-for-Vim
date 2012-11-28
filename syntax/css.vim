@@ -172,8 +172,6 @@ syn region cssPathFn start=/\<\(url\|format\)\s*(\zs/ end=/\ze)/ contained
 
 syn region cssAttValFn start=/\<\(rotate\|rgba\|rgb\|hsl\|hsla\)\s*(\zs/ end=/\ze)/ contained contains=cssNumber,cssUnits
 
-syn match cssBraket /[{}]/ contained
-
 syn match cssQuote /\('.*'\|".*"\)/ contained
 syn match cssPunctuation /[,;:]/ contained
 
