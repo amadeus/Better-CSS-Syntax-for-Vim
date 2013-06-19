@@ -34,7 +34,7 @@ syn region cssAtValBlock start=/:\zs/ end=/\ze[)]/ contained contains=cssAttr,cs
 syn region cssValFn start=/\<url\s*(/ end=/)\ze/ contained contains=cssPathFn
 
 syn match cssTagName /\*/
-syn keyword cssTagName a abbr acronym address applet area article aside audio b base basefont bdo big blockquote body br button canvas caption center cite code col colgroup command datalist dd del details dfn dir div dl dt em embed fieldset font form figcaption figure footer frame frameset h1 h2 h3 h4 h5 h6 head header hgroup hr html img i iframe img input ins isindex kbd keygen label legend li link map mark menu meta meter nav noframes noscript object ol optgroup option output p param pre progress q rp rt ruby s samp script section select small span strike strong style sub summary sup table tbody td textarea tfoot th thead time title tr tt ul u var variant video xmp
+syn keyword cssTagName a abbr acronym address applet area article aside audio b base basefont bdo big blockquote body br button canvas caption center cite code col colgroup command datalist dd del details dfn dir div dl dt em embed fieldset font form figcaption figure footer frame frameset h1 h2 h3 h4 h5 h6 head header hgroup hr html img i iframe img input ins isindex kbd keygen label legend li link map mark menu meta meter nav noframes noscript object ol optgroup option output p param pre progress q rp rt ruby s samp script section select small span strike strong style sub summary sup table tbody td textarea tfoot th thead time title tr tt ul u var variant video xmp main
 
 syn match cssClass "\.[A-Za-z][A-Za-z0-9_-]\{0,\}"
 
@@ -44,7 +44,7 @@ syn match cssPrefix /\(-\(webkit\|moz\|o\|ms\)-\)\|filter/
 
 syn match cssNumber /\(-\)\=\(\.\d\+\|\d\+\(\.\d\+\)\{0,\}\)/ contained
 
-syn match cssPseudo /\:\(child\|link\|visited\|active\|hover\|focus\|left\|right\|root\|empty\|target\|enabled\|disabled\|checked\|indeterminate\|valid\|invalid\|required\|optional\|default\|last\-of\-type\|first\-of\-type\)\>/
+syn match cssPseudo /\:\|\(:\)\|\(child\|link\|visited\|active\|hover\|focus\|left\|right\|root\|empty\|target\|enabled\|disabled\|checked\|indeterminate\|valid\|invalid\|required\|optional\|default\|last\-of\-type\|first\-of\-type\|search-cancel-button\|search-decoration\|focus-inner\)\>/
 syn match cssPseudo /\:first\-\(child\)\>/
 syn match cssPseudo /\:\{1,2\}first\-\(letter\|line\)\>/
 syn match cssPseudo /\:\(last\|only\)-child\>/
@@ -107,7 +107,7 @@ syn match cssAttr /\<text-\(top\|bottom\)\>/ contained
 syn match cssAttr /\<pre\(-\(wrap\|line\)\)\=\>/ contained
 syn match cssAttr /\<preserve\(-\(breaks\)\)\=\>/ contained
 
-syn match cssProp /\(appearance\|backface-visibility\|binding\|bottom\|clear\|clip\|color\|columns\|content\|crop\|cursor\|direction\|elevation\|empty-cells\|hanging-punctuation\|height\|hyphens\|icon\|inline-box-align\|left\|letter-spacing\|move-to\|nbsp-mode\|opacity\|orphans\|phonemes\|position\|play-during\|presentation-level\|punctuation-trim\|quotes\|rendering-intent\|resize\|richness\|right\|size\|speech-rate\|src\|stress\|string-set\|tab-size\|table-layout\|top\|unicode-bidi\|vertical-align\|visibility\|volume\|widows\|width\|z-index\|zimuth\)\ze\s*:/ contained
+syn match cssProp /\(appearance\|backface-visibility\|binding\|bottom\|clear\|clip\|color\|columns\|content\|crop\|cursor\|direction\|elevation\|empty-cells\|hanging-punctuation\|height\|hyphens\|icon\|inline-box-align\|left\|letter-spacing\|move-to\|nbsp-mode\|opacity\|orphans\|phonemes\|position\|play-during\|presentation-level\|punctuation-trim\|quotes\|rendering-intent\|resize\|richness\|right\|size\|speech-rate\|src\|stress\|string-set\|tab-size\|table-layout\|top\|unicode-bidi\|vertical-align\|visibility\|volume\|widows\|width\|z-index\|zimuth\|transform\|zoom\)\ze\s*:/ contained
 
 syn match cssProp /\(\<\|\)alignment-\(adjust\|baseline\)\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)animation\(-\(delay\|direction\|duration\|iteration-count\|name\|play-state\|timing-function\)\)\{0,1\}\>\ze\s*:/ contained
@@ -146,7 +146,7 @@ syn match cssProp /\(\<\|\)rotation\(-point\)\=\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)ruby-\(align\|overhang\|position\|span\)\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)speak\(-\(header\|numeral\|punctuation\)\)\=\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)target\(-\(name\|new\|position\)\)\=\>\ze\s*:/ contained
-syn match cssProp /\(\<\|\)text-\(align\(-last\)\=\|decoration\|emphasis\|height\|indent\|justify\|outline\|replace\|shadow\|transform\|wrap\|overflow\)\>\ze\s*:/ contained
+syn match cssProp /\(\<\|\)text-\(align\(-last\)\=\|decoration\|emphasis\|height\|indent\|justify\|outline\|replace\|shadow\|transform\|wrap\|overflow\|size-adjust\|rendering\)\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)transition\(-\(delay\|duration\|property\|timing-function\)\)\=\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)voice-\(balance\|duration\|family\|pitch\(-range\)\=\|rate\|stress\|volume\)\>\ze\s*:/ contained
 syn match cssProp /\(\<\|\)white-space\(-collapse\)\=\>\ze\s*:/ contained
@@ -186,14 +186,14 @@ HLink cssAtProps Function
 
 HLink cssAttr SpecialKey
 
-"HLink cssAttValFn Function
+HLink cssAttValFn Function
 
-"HLink cssValBlock Function
-"HLink cssValFn Function
+HLink cssValBlock Function
+HLink cssValFn Function
 
 HLink cssAttrBlock Normal
 
-"HLink cssClass Function
+HLink cssClass Function
 
 HLink cssColor Constant
 
@@ -201,14 +201,12 @@ HLink cssComment Comment
 
 HLink cssError ErrorMsg
 
-"HLink cssPathFn Directory
+HLink cssPathFn Directory
 
-"HLink cssFunction Function
-"HLink cssFunction Directory
-"HLink cssFnValBlock Function
+HLink cssFunction Function
+HLink cssFnValBlock Function
 
-HLink cssFuncRegion Normal
-"HLink cssFuncRegion Function
+HLink cssFuncRegion Function
 
 HLink cssIdentifier Identifier
 
