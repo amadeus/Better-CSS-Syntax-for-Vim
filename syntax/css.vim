@@ -173,7 +173,10 @@ syn region cssPathFn start=/\<\(url\|format\)\s*(\zs/ end=/\ze)/ contained
 syn region cssAttValFn start=/\<\(rotate\|rgba\|rgb\|hsl\|hsla\)\s*(\zs/ end=/\ze)/ contained contains=cssNumber,cssUnits
 
 syn match cssQuote /\('.*'\|".*"\)/ contained
-syn match cssPunctuation /[,;:]/ contained
+syn region cssQuoteD  start=+"+  skip=+\\\\\|\\$"+  end=+"+  contained
+syn region cssQuoteS  start=+'+  skip=+\\\\\|\\$'+  end=+'+  contained
+syn match cssPunctuation /[,;]/
+syn match cssPunctuation2 /[,;:]/ contained
 
 " Define the default highlighting.
 command -nargs=+ HLink hi def link <args>
@@ -224,7 +227,9 @@ HLink cssPropRegion Normal
 
 HLink cssPseudo Structure
 
-HLink cssQuote String
+HLink cssQuote  String
+HLink cssQuoteS String
+HLink cssQuoteD String
 
 HLink cssSelector Structure
 
