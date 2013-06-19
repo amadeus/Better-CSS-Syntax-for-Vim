@@ -63,7 +63,7 @@ syn region cssFuncRegion start=/{/ end=/}/ contains=cssPropRegion
 
 syn match cssPropRegion /[^{}]*/ contained contains=cssProp,cssAttrBlock,cssPrefix,cssComment transparent
 
-syn region cssAttrBlock start=/:\zs/ end=/\ze[;}]\{1\}/ contained contains=cssAttr,cssColor,cssImportant,cssNumber,cssUnits,cssQuote,cssFunction
+syn region cssAttrBlock start=/:/ end=/[;}]\{1\}/ contained contains=cssAttr,cssColor,cssImportant,cssNumber,cssUnits,cssQuoteS,cssQuoteD,cssFunction
 
 syn keyword cssAttr above absolute accent adjacent after alias all alphabetic alternate always auto avoid balance baseline back before behind below blink block bold bolder border both bottom capitalize caption cell center central circle clear clone code collapse compact copy crop cross crosshair current dashed default digits disc discard dot dotted double embed end fast faster fill first fixed forward front hanging help here hidden hide high higher horizontal icon ideographic inherit inhibit initial invert italic justify kashida landscape last left level lighter linear loud low lower ltr mathematical manual medium meet menu middle modal move multiple moderate narrower new none normal nowrap oblique overline parent perceptual pointer portrait progress reduced relative reverse ridge right root rtl same saturation scroll separate show silent single slice slide slow slower solid soft square start static stretch strong sub super suppress tab text tibetan top underline unrestricted vertical visible wait wider window contained sans-serif helvetica neue arial times new roman serif georgia courier padding-box monospace ellipsis wrap antialiased thick thin tibetan
 
