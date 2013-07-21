@@ -7,8 +7,13 @@
 " Full CSS2, most of HTML5 & CSS3 properties (include prefix like -moz-) supported
 
 " Quit when a syntax file was already loaded
-if exists("b:BetterCSSSyntaxforVim")
-  finish
+if !exists("main_syntax")
+  if version < 600
+    syntax clear
+  elseif exists("b:current_syntax")
+    finish
+  endif
+  let main_syntax = 'css'
 endif
 
 syn case ignore
@@ -241,6 +246,9 @@ HLink cssURL String
 
 delcommand HLink
 
-let b:current_syntax = "css"
-let b:BetterCSSSyntaxforVim = "1"
 syntax sync fromstart
+
+let b:current_syntax = "css"
+if main_syntax == 'css'
+  unlet main_syntax
+endif
